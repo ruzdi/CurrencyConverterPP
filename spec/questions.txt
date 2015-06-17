@@ -1,0 +1,12 @@
+1. What should I do if I get 0 after converting a currency upto two decimal points?
+    If I get 0 then this will create problem in two case
+       a. if from currency is 0  because 0/anything = infinite
+       a. if from currency and to currency is 0  because 0/0 = infinite
+
+
+2. For the last task, on the activity page when changing the currency code I am updating the transaction values.
+    For now it transaction values are updated based on the current rate.
+    -According to my understand it update based on the rate of that transaction date. For this work I have to check if that file exist locally. If not then fetch openexchange rate for that day and calculate amount based on that day.
+
+
+

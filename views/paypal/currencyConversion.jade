@@ -1,0 +1,34 @@
+extends ../layouts/layout
+block content
+    h1= pageHeader
+    div(class="row")
+        div(class="col-lg-6 col-md-6 col-sm-6")
+            form(class="form-form-horizontal", action="/paypal/currencyConversion", method="post")
+                div(class="form-group")
+                    label(class="col-md-6 control-label", for="amount") Amount
+                    div(class="col-md-6")
+                        input(name="amount", type="number", class="form-control", id="amount", required=true, value="#{(data && data.amount) ?data.amount :'' }", placeholder="Amount")
+                    br
+                div(class="form-group")
+                    label(class="col-md-6 control-label", for="currencyCode") Currency Code
+                    div(class="col-md-6")
+                        select(name="currencyCode", class="form-control", id="currencyCode")
+                            each item in currencyCodes
+                                option(value= item.code, selected=(data && data.currencyCode == item.code) )= item.code
+                    br
+                div(class="form-group")
+                    label(class="col-md-6 control-label", for="targetCurrencyCode") Target Currency Code
+                    div(class="col-md-6")
+                        select(name="targetCurrencyCode", class="form-control", id="targetCurrencyCode")
+                            each item in currencyCodes
+                                option(value= item.code, selected=(data && data.targetCurrencyCode == item.code) )= item.code
+                    br
+                div(class="col-md-12")
+                    button(type="submit", class="btn btn-primary" ) Convert
+        div(class="col-lg-6 col-md-6 col-sm-6")
+            if(error)
+                label(class="control-label", for="convertedCurrencyAmount", id="convertedCurrencyLabel" ) Result
+                h3(class="", for="amount", id="convertedCurrencyAmount" )= error
+            else if(result && result.targetCurrency)
+                label(class="control-label", for="convertedCurrencyAmount", id="convertedCurrencyLabel" ) Result
+                h3(class="", for="amount", id="convertedCurrencyAmount" )= ( result.fromCurrency.amount+" "+result.fromCurrency.code+" = "+result.targetCurrency.amount+" "+result.targetCurrency.code)

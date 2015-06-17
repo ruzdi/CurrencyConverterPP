@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="description", content="")
+        meta(name="author" content="")
+        title= title
+
+        //Bootstrap core CSS
+        link(href="../../assets/css/bootstrap.min.css" rel="stylesheet")
+
+    body
+        nav(class="navbar navbar-default navbar-static-top")
+            div(class="container")
+                div(class="navbar-header")
+                    button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar")
+                        span(class="sr-only") Toggle navigation
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                    a(class="navbar-brand" href="#")=projectName
+
+                div(id="navbar", class="navbar-collapse collapse")
+                    ul(class="nav navbar-nav")
+                        li(class="active")
+                            a(href="/") Home
+                        li
+                            a(href="/paypal/activity") Activity
+                        li
+                            a(href="/paypal/currencyConversion") Currency Conversion
+                        li
+                            a(href="/paypal/conversionRate") Conversion Rate
+        div(class="container")
+            //Main component for a primary marketing message or call to action
+            div(class="row")
+                div(class="col-lg-12 col-md-12 col-sm-12")
+                    block content
+
+        //Bootstrap core JavaScript
+        //script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+        //script(src="../../assets/js/bootstrap.min.js")

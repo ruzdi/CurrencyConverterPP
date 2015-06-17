@@ -1,0 +1,17 @@
+extends ../layouts/layout
+block content
+    h1= pageHeader
+    table(class="table table-striped")
+        each transaction in transactions
+            tbody
+                tr
+                    td= transaction.date
+                    td= transaction.transactionType+" : "+transaction.transactionWith
+                    td
+                        select(name="targetCurrencyCode", class="form-control currency-selector", data-date="#{transaction.date}", data-amount="#{transaction.transactionAmount}", , data-currency-code="#{defaultCurrencyCode}" )
+                            each item in currencyCodes
+                                option(value= item.code, selected=(defaultCurrencyCode && defaultCurrencyCode == item.code) )= item.code
+                    td= defaultCurrencySymbol+transaction.transactionAmount.toFixed(2)
+
+    script(src="https://cdn.socket.io/socket.io-1.3.5.js")
+    script(src="../../assets/js/activity.js")
